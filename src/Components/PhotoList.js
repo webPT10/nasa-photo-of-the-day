@@ -1,6 +1,8 @@
 // PhotoList will pull in PHotoCard via PROPs
-// set STATE
+
 // import PhotoCard
+
+// set STATE -- done?
 
 // useEffect -- done 
 // import axios -- done 
@@ -8,6 +10,7 @@
 // EXPORT PhotoList to App.js -- done
 
 import React, { useState, useEffect } from "react";
+import { PhotoCard } from './PhotoCard';
 
 import axios from 'axios'; 
 
@@ -29,6 +32,16 @@ export default function PhotoList (){
     }, []);
 
     return (
-        <div>This is from PhotoList</div>
-    )
+        <div>
+            {photo.map((image, id) => {
+                return (
+                    <div>
+                        <PhotoCard 
+                            key={photo.earth_date}
+                        />
+                    </div>
+                );
+            })}
+        </div>
+    );
 }
