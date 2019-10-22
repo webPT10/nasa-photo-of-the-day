@@ -8,7 +8,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <p>🚀</p>
+      <span>🚀</span>
       <h1>Mars!</h1>
       <PhotoList />
     </div>
