@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <span>🚀</span>
-      <h1>Mars!</h1>
+      <h1>APOD!</h1>
       <PhotoList />
     </div>
   );

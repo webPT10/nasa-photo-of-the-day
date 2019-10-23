@@ -10,38 +10,37 @@
 // EXPORT PhotoList to App.js -- done
 
 import React, { useState, useEffect } from "react";
-import { PhotoCard } from './PhotoCard';
+import axios from 'axios';
 
-import axios from 'axios'; 
+import PhotoCard  from "./PhotoCard";
 
 export default function PhotoList (){
-    const [photo, setPhoto] = useState([])
+    const [photos, setPhotos] = useState([])
+    // console.log(photos)
 
     useEffect(() => {
-    axios
-        .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=DEMO_KEY`)
+        axios
+            .get(`https://api.nasa.gov/planetary/apod?api_key=ZzotyuagY1IjqpZCRIGxPHfYFOjfk5kSiqfQlKMY`)
 
-        .then(response => {
-            console.log(response)
-            setPhoto(response.data)
-        })
+            .then(response => {
+                const images = response.data;
+                // console.log(response)
+                setPhotos(images)
+            })
 
-        .catch(error => {
-            console.log(`Error, oh to ${error}`)
-        });
+            .catch(error => {
+                console.log(`Error, oh to ${error}`)
+            });
     }, []);
 
     return (
-        <div>
-            {photo.map((image, id) => {
-                return (
-                    <div>
-                        <PhotoCard 
-                            key={photo.earth_date}
-                        />
-                    </div>
-                );
-            })}
+        <div className='photo'>
+            <PhotoCard 
+                date={photos.date}
+                title={photos.title}
+                explanation={photos.explanation}
+                url={photos.url}
+            />
         </div>
     );
 }
