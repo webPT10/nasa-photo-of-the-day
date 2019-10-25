@@ -39,6 +39,36 @@ const Rotate = styled.div`
     animation: ${rotate} 4s linear infinite;
     padding: 2rem 1rem;
     font-size: 1.2rem;
+`;
+
+const glow = keyframes`
+0% {
+    text-shadow: 0 0 10px rgba(255,255,255,.8),
+                 0 0 20px rgba(255,255,255,.8),
+                 0 0 22px  rgba(255,255,255,.8),
+                 0 0 40px  rgba(66,220,219,.8),
+                 0 0 60px  rgba(66,220,219,.8),
+                 0 0 80px  rgba(66,220,219,.5),
+                 0 0 100px rgba(66,220,219,.5),
+                 0 0 140px rgba(66,220,219,.5),
+                 0 0 200px rgba(66,220,219,.5);
+  }
+  100% {
+    text-shadow: 0 0 2px rgba(255,255,255,.8),
+                 0 0 8px rgba(255,255,255,.8),
+                 0 0 10px rgba(255,255,255,.8),
+                 0 0 20px rgba(66,220,219,.8),
+                 0 0 30px rgba(66,220,219,.8),
+                 0 0 40px rgba(66,220,219,.8),
+                 0 0 50px rgba(66,220,219,.5),
+                 0 0 80px rgba(66,220,219,.5);
+  }
+`
+const Glow = styled.h1`
+    color: white;
+    font-size: 6rem;
+    text-align: center;
+    animation: ${glow} 2s infinite
 `
 const PhotoCard = (props) => {
 
@@ -46,7 +76,7 @@ const PhotoCard = (props) => {
         <BackgroundDiv style={{backgroundImage:`url(${props.url})`}}>
             <div>
                 <Rotate>🚀</Rotate>
-                <h1>Astronomy Photo of the Day!</h1>
+                <Glow>NASA Astronomy Photo of the Day!</Glow>
                 <DateH2>{props.date}</DateH2>
                 <TitleH3>{props.title}</TitleH3>
                 <ParaP>{props.explanation}</ParaP>
